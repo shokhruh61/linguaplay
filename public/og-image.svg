@@ -1,0 +1,8 @@
+﻿<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <circle cx="1040" cy="90" r="210" fill="#10B981" fill-opacity="0.22"/>
+  <circle cx="130" cy="560" r="240" fill="#0EA5E9" fill-opacity="0.2"/>
+  <text x="90" y="270" fill="#E2E8F0" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">English Grammar Game</text>
+  <text x="90" y="360" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="86" font-weight="900">LinguaPlay</text>
+  <text x="90" y="430" fill="#A7F3D0" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="600">O‘ynab inglizcha o‘rgan!</text>
+</svg>
