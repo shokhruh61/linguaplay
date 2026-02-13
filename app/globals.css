@@ -3,6 +3,10 @@
 :root {
   --bg: #f8fafc;
   --text: #0f172a;
+  --card: #ffffff;
+  --ring: rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 8px 28px rgba(15, 23, 42, 0.08);
+  --shadow-lift: 0 12px 34px rgba(15, 23, 42, 0.14);
 }
 
 * {
@@ -21,10 +25,103 @@ body {
     radial-gradient(circle at 85% 0%, rgba(14, 165, 233, 0.08), transparent 40%),
     var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", "Inter", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   text-decoration: none;
 }
 
+button,
+a,
+select {
+  transition: all 160ms ease;
+}
+
+.lp-card {
+  border: 1px solid var(--ring);
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+}
+
+.lp-card:hover {
+  box-shadow: var(--shadow-lift);
+}
+
+.lp-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-progress::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 34%;
+  transform: translateX(-140%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  animation: lp-shine 1.8s linear infinite;
+}
+
+.lp-streak-hot {
+  animation: lp-bounce 0.9s ease-in-out infinite;
+}
+
+.lp-feedback-correct {
+  animation: lp-correct-pop 340ms ease;
+}
+
+.lp-feedback-wrong {
+  animation: lp-wrong-shake 340ms ease;
+}
+
+@keyframes lp-shine {
+  to {
+    transform: translateX(340%);
+  }
+}
+
+@keyframes lp-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes lp-correct-pop {
+  0% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lp-wrong-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-progress::after,
+  .lp-streak-hot,
+  .lp-feedback-correct,
+  .lp-feedback-wrong {
+    animation: none !important;
+  }
+}

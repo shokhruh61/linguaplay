@@ -27,9 +27,9 @@ function uniqueById(items) {
 }
 
 function modeLabel(mode) {
-  if (mode === GAME_MODES.DAILY) return "Daily Challenge";
+  if (mode === GAME_MODES.DAILY) return "Kunlik challenge";
   if (mode === GAME_MODES.MISTAKES) return "Xatolarim";
-  return "Classic";
+  return "Klassik";
 }
 
 export default function GameClient() {
@@ -347,17 +347,17 @@ export default function GameClient() {
   }
 
   if (booting) {
-    return <p className="rounded-xl bg-white p-4 text-sm text-slate-600">Yuklanmoqda...</p>;
+    return <p className="lp-card rounded-2xl p-4 text-sm text-slate-600">Yuklanmoqda...</p>;
   }
 
   if (showSetup) {
     const topics = [...new Set(getLevelQuestions(setupLevel).map((q) => q.topic))];
     const startHref = `/game?start=1&level=${setupLevel}&mode=${setupMode}&topic=${encodeURIComponent(setupTopic)}`;
     return (
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-2xl font-black tracking-tight text-slate-900">O‘yin yo‘nalishini tanlang</h1>
-        <p className="mt-2 text-sm text-slate-600">Qaysi rejim va mavzuda o‘ynashni o‘zingiz hal qilasiz.</p>
-        <div className="mt-5 grid gap-4 sm:grid-cols-3">
+      <section className="lp-card rounded-3xl p-5 sm:p-7">
+        <h1 className="text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">O‘yin yo‘nalishini tanlang</h1>
+        <p className="mt-2 text-sm text-slate-600">Rejim va mavzuni tanlang, keyin o‘yinni boshlang.</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-3 sm:gap-4">
           <label className="text-sm font-semibold text-slate-700">
             Level
             <select
@@ -366,7 +366,7 @@ export default function GameClient() {
                 setSetupLevel(e.target.value);
                 setSetupTopic("all");
               }}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-normal text-slate-800 outline-none ring-0 focus:border-slate-500"
             >
               {LEVELS.map((lvl) => (
                 <option key={lvl} value={lvl}>{lvl}</option>
@@ -378,10 +378,10 @@ export default function GameClient() {
             <select
               value={setupMode}
               onChange={(e) => setSetupMode(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-normal text-slate-800 outline-none ring-0 focus:border-slate-500"
             >
-              <option value={GAME_MODES.NORMAL}>Classic</option>
-              <option value={GAME_MODES.DAILY}>Daily Challenge</option>
+              <option value={GAME_MODES.NORMAL}>Klassik</option>
+              <option value={GAME_MODES.DAILY}>Kunlik challenge</option>
             </select>
           </label>
           <label className="text-sm font-semibold text-slate-700">
@@ -389,7 +389,7 @@ export default function GameClient() {
             <select
               value={setupTopic}
               onChange={(e) => setSetupTopic(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 font-normal"
+              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-normal text-slate-800 outline-none ring-0 focus:border-slate-500"
             >
               <option value="all">Barcha mavzular</option>
               {topics.map((topicName) => (
@@ -398,11 +398,11 @@ export default function GameClient() {
             </select>
           </label>
         </div>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <Link href={startHref} className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white">
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href={startHref} className="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:-translate-y-0.5 hover:bg-slate-800">
             Boshlash
           </Link>
-          <Link href="/game?mode=mistakes" className="rounded-lg border border-sky-300 px-4 py-2 text-sm font-semibold text-sky-700 hover:bg-sky-50">
+          <Link href="/game?mode=mistakes" className="rounded-xl border border-sky-300 px-5 py-2.5 text-sm font-semibold text-sky-700 hover:bg-sky-50">
             Xatolarim
           </Link>
         </div>
@@ -412,10 +412,10 @@ export default function GameClient() {
 
   if (!question) {
     return (
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 text-center">
+      <section className="lp-card rounded-3xl p-6 text-center">
         <h2 className="text-xl font-bold text-slate-900">Savol topilmadi</h2>
         <p className="mt-2 text-slate-600">Ushbu rejim uchun savollar mavjud emas.</p>
-        <Link href="/levels" className="mt-4 inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white">
+        <Link href="/levels" className="mt-4 inline-block rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Darajaga qaytish
         </Link>
       </section>
@@ -423,22 +423,27 @@ export default function GameClient() {
   }
 
   return (
-    <section className="space-y-4">
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-slate-700">
-            {headerStats.modeName} · {level} · {topic === "all" ? "All topics" : topic}
+    <section className="space-y-4 sm:space-y-5">
+      <div className="lp-card rounded-3xl p-4 sm:p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+          <p className="text-xs font-semibold text-slate-700 sm:text-sm">
+            {headerStats.modeName} · {level} · {topic === "all" ? "Barcha mavzular" : topic}
           </p>
-          <div className="flex flex-wrap gap-2 text-xs sm:text-sm">
-            <span className="rounded-md bg-slate-100 px-2 py-1 font-semibold text-slate-700">Score: {score}</span>
-            <span className="rounded-md bg-orange-100 px-2 py-1 font-semibold text-orange-700">Streak: {streak} 🔥</span>
-            <span className="rounded-md bg-emerald-100 px-2 py-1 font-semibold text-emerald-700">Accuracy: {headerStats.accuracy}%</span>
+          <div className="flex flex-wrap gap-1.5 text-xs sm:gap-2 sm:text-sm">
+            <span className="rounded-lg bg-slate-100 px-2.5 py-1 font-semibold text-slate-700">Ball: {score}</span>
+            <span className={`rounded-lg px-2.5 py-1 font-semibold ${streak > 0 ? "lp-streak-hot bg-orange-100 text-orange-700" : "bg-slate-100 text-slate-700"}`}>
+              Streak: {streak} 🔥
+            </span>
+            <span className="rounded-lg bg-emerald-100 px-2.5 py-1 font-semibold text-emerald-700">Aniqlik: {headerStats.accuracy}%</span>
           </div>
         </div>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-          <div className="h-full rounded-full bg-emerald-500 transition-all" style={{ width: `${progressPct}%` }} />
+        <div className="lp-progress mt-3 h-2.5 overflow-hidden rounded-full bg-slate-100">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-sky-500 transition-all duration-500"
+            style={{ width: `${progressPct}%` }}
+          />
         </div>
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs font-medium text-slate-500">
           Savol {Math.min(currentIndex + 1, questions.length)} / {questions.length}
         </p>
       </div>
@@ -451,12 +456,18 @@ export default function GameClient() {
       />
 
       {feedback ? (
-        <div className={`rounded-xl p-4 text-sm ${feedback === "correct" ? "bg-emerald-50 text-emerald-800" : "bg-rose-50 text-rose-800"}`}>
+        <div
+          className={`rounded-2xl border p-4 text-sm shadow-sm ${
+            feedback === "correct"
+              ? "lp-feedback-correct border-emerald-200 bg-emerald-50 text-emerald-800"
+              : "lp-feedback-wrong border-rose-200 bg-rose-50 text-rose-800"
+          }`}
+        >
           {feedback === "correct" ? (
-            <p className="font-semibold">Savol to‘g‘ri, keyingi savolga o‘taylikmi?</p>
+            <p className="font-semibold">Ajoyib! Javob to‘g‘ri. Keyingi savolga o‘tamizmi?</p>
           ) : (
             <>
-              <p className="font-semibold">Xato.</p>
+              <p className="font-semibold">Biroz xato bo‘ldi.</p>
               <p className="mt-1">To‘g‘ri javob: {question.answer}</p>
               <p className="mt-1">{question.explanation}</p>
             </>
@@ -474,7 +485,7 @@ export default function GameClient() {
                 sessionMistakes,
               })
             }
-            className="mt-3 rounded-lg bg-slate-900 px-4 py-2 text-xs font-semibold text-white hover:bg-slate-800"
+            className="mt-3 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:-translate-y-0.5 hover:bg-slate-800"
           >
             Keyingi
           </button>

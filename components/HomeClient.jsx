@@ -50,24 +50,24 @@ export default function HomeClient() {
   });
 
   return (
-    <div className="space-y-10">
-      <section className="rounded-3xl bg-[linear-gradient(135deg,#0f172a,#1e293b,#14532d)] p-8 text-white shadow-xl sm:p-12">
+    <div className="space-y-8 sm:space-y-10">
+      <section className="rounded-3xl bg-[linear-gradient(135deg,#0f172a,#1e293b,#14532d)] p-6 text-white shadow-xl sm:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-200">English Grammar Game</p>
         <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">LinguaPlay</h1>
         <p className="mt-4 max-w-xl text-lg text-slate-100">O‘ynab inglizcha o‘rgan!</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/levels" className="rounded-lg bg-emerald-400 px-5 py-3 text-sm font-bold text-emerald-950 hover:bg-emerald-300">
+        <div className="mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+          <Link href="/levels" className="rounded-xl bg-emerald-400 px-5 py-3 text-sm font-bold text-emerald-950 shadow-sm hover:-translate-y-0.5 hover:bg-emerald-300">
             Boshlash
           </Link>
           {canContinue ? (
-            <Link href="/game?continue=1" className="rounded-lg border border-white/50 px-5 py-3 text-sm font-bold text-white hover:bg-white/10">
+            <Link href="/game?continue=1" className="rounded-xl border border-white/50 px-5 py-3 text-sm font-bold text-white hover:-translate-y-0.5 hover:bg-white/10">
               Davom etish
             </Link>
           ) : null}
-          <Link href="/game?mode=daily&level=A1" className="rounded-lg border border-amber-300 px-5 py-3 text-sm font-bold text-amber-100 hover:bg-amber-300/10">
+          <Link href="/game?mode=daily&level=A1" className="rounded-xl border border-amber-300 px-5 py-3 text-sm font-bold text-amber-100 hover:-translate-y-0.5 hover:bg-amber-300/10">
             Daily Challenge
           </Link>
-          <Link href="/game?mode=mistakes" className="rounded-lg border border-sky-300 px-5 py-3 text-sm font-bold text-sky-100 hover:bg-sky-300/10">
+          <Link href="/game?mode=mistakes" className="rounded-xl border border-sky-300 px-5 py-3 text-sm font-bold text-sky-100 hover:-translate-y-0.5 hover:bg-sky-300/10">
             Xatolarim
           </Link>
         </div>
@@ -78,14 +78,14 @@ export default function HomeClient() {
         <h2 className="text-2xl font-bold text-slate-900">Nega LinguaPlay?</h2>
         <ul className="mt-4 grid gap-3 sm:grid-cols-2">
           {features.map((item) => (
-            <li key={item} className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 shadow-sm">
+            <li key={item} className="lp-card rounded-2xl p-4 text-sm text-slate-700">
               • {item}
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <section className="lp-card rounded-3xl p-6">
         <h2 className="text-2xl font-bold text-slate-900">Ko‘p so‘raladigan savollar</h2>
         <div className="mt-4 space-y-4">
           {faq.map((item) => (
